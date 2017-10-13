@@ -1,0 +1,19 @@
+{
+  'StatusList': {
+    'Status': [
+      'ok'
+    ]
+  },
+  'RegistrationDate': '2016-03-24T22:09Z',
+  'RegistrantEmail': 'YuMing@YinSiBaoHu.AliYun.com',
+  'RequestId': '91E78576-CC41-4B15-9367-D763630BB529',
+  'DnsServers': {
+    'DnsServer': [
+      'dns10.hichina.com',
+      'dns9.hichina.com'
+    ]
+  },
+  'RegistrantName': 'Nexperian Holding Limited',
+  'Registrar': 'HICHINA ZHICHENG TECHNOLOGY LTD.',
+  'ExpirationDate': '2018-03-24T22:09Z'
+}

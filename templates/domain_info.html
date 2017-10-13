@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block body %}
+    <div style="height: 100px"></div>
+    <h1 class="text-center">域名信息列表</h1>
+    <div style="height: 50px"></div>
+    <table class="text-center table table-hover table-bordered table-striped table-condensed">
+        <tr>
+            <td>域名</td>
+            <td>所有者</td>
+            <td>所有者联系邮箱</td>
+            <td>注册商</td>
+            <td>注册日期</td>
+            <td>到期日期</td>
+        </tr>
+    </table>
+
+{% endblock %}
+{% block js %}
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "", context: document.body, async: true, success: function (domainInfoList) {
+                    var html = '';
+                    for (var i in domainInfoList) {
+                        html += '<tr>' +
+                            '            <td>' + domainInfoList[i].DomainName + '</td>' +
+                            '            <td>' + domainInfoList[i].RegistrantName + '</td>' +
+                            '            <td>' + domainInfoList[i].RegistrantEmail + '</td>' +
+                            '            <td>' + domainInfoList[i].Registrar + '</td>' +
+                            '            <td>' + domainInfoList[i].RegistrationDate + '</td>' +
+                            '            <td>' + domainInfoList[i].ExpirationDate + '</td>' +
+                            '        </tr>'
+                    }
+                    $('table').append(html);
+                }
+            });
+        })
+    </script>
+{% endblock %}

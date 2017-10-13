@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到首页</title>
+    <!--1.添加视口标签 快捷方式：meta:vp -->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--2.设置网页渲染模式  快捷方式：meta:compat  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--3.把bootstrap 核心样式（压缩版）引入-->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/css/bootstarap.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style type="text/css">
+        select {
+            height: 35px;
+        }
+
+        label {
+            margin: 5px;
+            line-height: 30px;
+        }
+
+        span {
+            display: block;
+            width: 100px;
+            float: left;
+            text-align: right;
+        }
+
+        .domain {
+            position: relative;
+            left: 19%;
+        }
+
+        .https {
+            position: relative;
+            left: -10%;
+        }
+
+        input[type=submit] {
+            height: 50px;
+            width: 100px;
+            position: relative;
+            left: 5%;
+
+        }
+
+        select {
+            width: 122px;
+        }
+    </style>
+
+</head>
+<body style="background-color: #f5f5f5">
+
+<div id="main-nav" class="navbar navbar-inverse bs-docs-nav " role="banner" style="background-color: #1ba354">
+    <div class="container">
+        <div class="navbar-header responsive-logo">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                    data-target="#bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+
+            </button>
+            <div class="navbar-brand">
+                <a href="javascript:void(0)"><img src="/static/img/loggo.png"></a>
+            </div>
+        </div>
+        <nav class="navbar-collapse collapse" role="navigation" id="bs-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
+                {% if request.user.is_authenticated %}
+                    <li><a id="navbar-nav-list-home" href="javascript:void(0)">欢迎登陆</a></li>
+                    <li><a id="navbar-nav-list-testimonials" href="javascript:void(0)">用户名:{{ request.user }}</a></li>
+                    <li><a id="navbar-nav-list-pricing" href="javascript:void(0)">
+                        姓名：{{ request.user.userpro.name }}</a></li>
+                {% else %}
+                    <span style="color: red">登录/注册 /<a href="/accounts/logout">注销</a></span>
+                {% endif %}
+                <li><a id="navbar-nav-list-signup" style="padding: 0px 5px 0px 5px;" class="btn signup-button"
+                       href="/accounts/logout">注销</a></li>
+
+                <li><a target="_blank" id="admin" href="/admin" class="btn signup-button btn-info">后台管理</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+{% block body %}
+    <div class="container">
+        <div class="container" style="z-index: 9;position: absolute;top: 20%;">
+
+            <h1 class="text-center"><b>域名申请</b></h1><br>
+        <a class=" text-center " href="/domainInfo" target="_blank">域名信息查看</a>
+            <a class=" text-center " href="/his" target="_blank">历史申请记录</a>
+            <a class=" text-center " href="/Review" target="_blank">管理员审核界面</a>
+            <a class=" text-center " href="/DeleteDomainRecord" target="_blank">删除解析记录</a>
+            <div style="height: 10px"></div>
+
+            <form role="form" action="" method="post">{% csrf_token %}
+                <div class="form-group clearfix">
+                    <label class="control-label col-md-4 text-right">域名：</label>
+                    <div class="col-md-6">
+                        <select name="domain">
+                            <option selected="selected">无</option>
+                            {% for i in d1 %}
+                                <option>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                        <input name="domain1" type="text" placeholder="如：www" autofocus required=""/>
+                        <!--<input name="domain2" type="text" placeholder="请输入要申请的域名" required autofocus/>-->
+                        <select name="domain3">
+                            {#                    <option selected="selected">healthmall</option>#}
+                            {% for i in d2 %}
+                                <option>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="domain4">
+                            {#                    <option selected="selected">cn</option>#}
+                            {% for i in d3 %}
+                                <option>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group clearfix">
+                    <label for="" class="control-label col-md-4 text-right">要解析到的IP地址:</label>
+                    <div class="col-md-6">
+                        {#                                <input type="text" disabled class="form-control" name="number"/>#}
+                        <input class="form-control" name="ip" type="text" placeholder="如：121.201.29.81" required="">
+                    </div>
+                </div>
+                {#        <label><span>申请人:</span><input name="user" type="text" placeholder="如：张三"></label><br>#}
+                <div class="form-group clearfix">
+                    <label for="" class="control-label col-md-4 text-right">申请人:</label>
+                    <div class="col-md-6">
+                        {#                                <input type="text" disabled class="form-control" name="number"/>#}
+                        <input class="form-control" name="user" type="text" placeholder="如：张三" required="">
+                    </div>
+                </div>
+                {#        <label><span>申请业务部门:</span><input name="department" type="text" placeholder="如：技术部"><br></label><br>#}
+                <div class="form-group clearfix">
+                    <label for="" class="control-label col-md-4 text-right">申请业务部门:</label>
+                    <div class="col-md-6">
+                        {#                                <input type="text" disabled class="form-control" name="number"/>#}
+                        <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">
+                    </div>
+                </div>
+
+                {#        <label><span>域名用途:</span><textarea name="use" type="text" placeholder="如：做xx事情"></textarea><br></label><br>#}
+                <div class="form-group clearfix">
+                    <label for="" class="control-label col-md-4 text-right">域名用途:</label>
+                    <div class="col-md-6">
+                        {#                <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">#}
+                        <textarea class="form-control" name="use" type="text" placeholder="如：做xx事情"
+                                  required=""></textarea>
+                    </div>
+                </div>
+
+
+                <div>
+                    <label class=""><span>是否https</span>:
+                        <input class="btn btn-danger" type="radio" name="https" value="否" checked>否
+                        <input class="btn btn-danger" type="radio" name="https" value="是">是
+                    </label>
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="提交">
+                <!--<button class="btn btn-lg btn-warning btn-block" type="submit">登录</button> -->
+
+            </form>
+            {% if ok %}
+                <h4 style="color: red">已成功提交申请域名:</h4>
+                {{ ok|safe }}
+            {% endif %}
+            <h4>运维部门收到配置信息时，如果是紧急需求1小时内完成，如果是正常需求1个工作日内完成配置。</h4>
+        </div>
+    </div>
+{% endblock %}
+</body>
+<!--4.把jQuery 引入-->
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<!--5.把bootstrap 核心脚本文件（压缩版）引入-->
+<script src="/static/js/bootstrap.min.js"></script>
+{% block js %}{% endblock %}
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>历史申请记录</title>
+    <!--1.添加视口标签 快捷方式：meta:vp -->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--2.设置网页渲染模式  快捷方式：meta:compat  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!--3.把bootstrap 核心样式（压缩版）引入-->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+    <style>
+        tr th {
+            text-align: center;
+
+        }
+
+        .step-links {
+            margin-right: 50px;
+        }
+
+        .页的序号 {
+            margin-right: 20px;
+        }
+
+        li a[href="?page={{ contacts.number }}"] {
+            background-color: #1b6d85;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+{% if 解析记录删除 %}
+    <h1 class="text-center" style="color: red"><b>解析记录删除界面</b></h1>
+{% else %}
+    <h1 class="text-center"><b>历史申请记录</b></h1>
+{% endif %}
+<div class="table-responsive">
+    <table class="text-center table table-hover table-bordered table-striped table-condensed ">
+        <tr>
+            <th>申请人</th>
+            <th>申请业务部门</th>
+            <th>域名用途</th>
+            <th>正式域名</th>
+            <th>解析到的IP</th>
+            {#            <th>测试</th>#}
+            {#            <th>开发</th>#}
+            {#            <th>灰度</th>#}
+            {#            <th>验收</th>#}
+            <th>是否需要https</th>
+            <th>申请时间</th>
+            <th>申请ID</th>
+            <th>解析记录的ID</th>
+            <th>邮件通知</th>
+            <th>审核状态</th>
+            <th>删除</th>
+        </tr>
+        {% for i in contacts %}
+            <tr id="{{ i.id }}" RecordId="{{ i.RecordId }}">
+                <td>{{ i.name }}</td>
+                <td>{{ i.department }}</td>
+                <td>{{ i.use }}</td>
+                <td>{{ i.domain }}</td>
+                <td>{{ i.ip }}</td>
+                {#                <td>beta-{{ i.domain }}</td>#}
+                {#                <td>dev-{{ i.domain }}</td>#}
+                {#                <td>rel-{{ i.domain }}</td>#}
+                {#                <td>check-{{ i.domain }}</td>#}
+                <td>{{ i.https }}</td>
+                <td>{{ i.updatetime|date:"Y-m-d H:i:s" }}</td>
+                <td>{{ i.id }}</td>
+                <td>{{ i.RecordId }}</td>
+                <td>
+                    <select name="mail">
+                        <option value="no">不通知</option>
+                        <option value="ok" selected="selected">通知</option>
+                    </select>
+                </td>
+                <td>{{ i.Review_status }}</td>
+                <td>
+                    <button class="btn btn-danger">删除</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div class="pagination pull-right ">
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if contacts.has_previous %}
+                {#            <a class="btn btn-primary" href="?page={{ contacts.previous_page_number }}">上一页</a>#}
+                <li>
+                    <a href="?page={{ contacts.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">上一页&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for i in 页的序号 %}
+                {#                <a class="btn btn-primary " href="?page={{ i }}">{{ i }}</a>#}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endfor %}
+
+            {% if contacts.has_next %}
+                {#            <a class="btn btn-primary" href="?page={{ contacts.next_page_number }}">下一页</a>#}
+                <li>
+                    <a href="?page={{ contacts.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">下一页&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+
+
+        </ul>
+    </nav>
+
+    {#    <span class="页的序号" data-id="{{ contacts.number }}">#}
+    {#        {% for i in 页的序号 %}#}
+    {##}
+    {#            <a class="btn btn-primary " href="?page={{ i }}">{{ i }}</a>#}
+    {##}
+    {#        {% endfor %}#}
+    {#    </span>#}
+
+    {#    <span class="step-links text-center ">#}
+    {#        {% if contacts.has_previous %}#}
+    {#            <a class="btn btn-primary" href="?page={{ contacts.previous_page_number }}">上一页</a>#}
+    {#        {% endif %}#}
+    {##}
+    <span class="current text-center">
+             第{{ contacts.number }} 页,共 {{ contacts.paginator.num_pages }}页.
+        </span>
+    {##}
+    {#        {% if contacts.has_next %}#}
+    {#            <a class="btn btn-primary" href="?page={{ contacts.next_page_number }}">下一页</a>#}
+    {#        {% endif %}#}
+    {#    </span>#}
+</div>
+{#del#}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">删除确认</h4>
+            </div>
+            <div class="modal-body">
+                确认删除：<span id="确认删除"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="确认删除确认">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--4.把jQuery 引入-->
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<!--5.把bootstrap 核心脚本文件（压缩版）引入-->
+<script src="/static/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var 页的序号 = $('.页的序号').data('id');
+        $("[href='?page=" + 页的序号 + "']").hide();
+        $("button").click(function () {
+            var _id = $(this).parent().parent().attr("id");
+            var RecordId = $(this).parent().parent().attr("RecordId");
+            var select_ = $(this).parent().parent().find('select').find("option:selected").val();
+            console.log(select_);
+            $("#myModal").modal('show');
+            $('#确认删除').html("申请ID为<b style='color:red'>" + _id + "</b>的记录");
+            $('#确认删除确认').click(function () {
+                $("#" + _id).remove();
+                //alert(_id);
+                $.post("", {'_id': _id, "mail": select_, "RecordId": RecordId}, function () {
+                    alert('成功删除ID为' + _id + "的记录");
+                    history.go(0);
+                })
+            });
+
+        });
+    });
+</script>
+</body>
+
+</html>
