@@ -24,7 +24,7 @@ class maohao_info(models.Model):
     maohao = models.CharField('猫号',max_length=100)
     phone = models.CharField(max_length=100)
     times=models.CharField(max_length=100)
-    use = models.CharField('域名使用情况说明用途', max_length=100, null=True)
+    use = models.CharField('使用情况说明用途', max_length=100, null=True)
     def __str__(self):
         return self.name
 
