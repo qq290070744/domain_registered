@@ -75,7 +75,7 @@
                     <li><a id="navbar-nav-list-pricing" href="javascript:void(0)">
                         姓名：{{ request.user.userpro.name }}</a></li>
                 {% else %}
-                    <span style="color: red">登录/注册 /<a href="/accounts/logout">注销</a></span>
+{#                    <span style="color: red">登录/注册 /<a href="/accounts/logout">注销</a></span>#}
                 {% endif %}
                 <li><a id="navbar-nav-list-signup" style="padding: 0px 5px 0px 5px;" class="btn signup-button"
                        href="/accounts/logout">注销</a></li>
@@ -141,7 +141,7 @@
 
                 {#        <label><span>域名用途:</span><textarea name="use" type="text" placeholder="如：做xx事情"></textarea><br></label><br>#}
                 <div class="form-group clearfix">
-                    <label for="" class="control-label col-md-4 text-right">域名使用情况说明用途:</label>
+                    <label for="" class="control-label col-md-4 text-right">使用情况说明用途:</label>
                     <div class="col-md-6">
                         {#                <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">#}
                         <textarea class="form-control" name="use" type="text" placeholder="如：XXXX使用情况说明内容，比如是否私教号，平时使用健康猫主要做什么"
