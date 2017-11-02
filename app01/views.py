@@ -117,18 +117,22 @@ def domain_info(request):
         return JsonResponse(domain_info_list, safe=False)
     return render(request, 'domain_info.html')
 
+
 def maohao_souji(request):
     if request.POST:
-        data=request.POST
-        name=data.get('name')
-        department=data.get('department')
-        maohao=data.get('maohao')
-        phone=data.get('phone')
-        times=data.get('time')
-        use=data.get('use')
-        b = maohao_info(name=name,department=department,maohao=maohao,phone=phone,times=times,use=use)
+        data = request.POST
+        name = data.get('name')
+        department = data.get('department')
+        maohao = data.get('maohao')
+        phone = data.get('phone')
+        times = data.get('time')
+        use = data.get('use')
+        b = maohao_info(name=name, department=department, maohao=maohao, phone=phone, times=times, use=use)
         b.save()
-    return render(request,'maohao.html')
+        return render(request, 'maohao.html', {"ok": "ok"})
+    return render(request, 'maohao.html')
+
+
 @login_required
 def his(request):
     seach = request.GET.get('seach')
@@ -249,7 +253,7 @@ def Seach(seach, data):
         data = data.filter(Q(domain__icontains=search_keywords) | Q(ip__icontains=search_keywords) | Q(
             name__icontains=search_keywords) | Q(department__icontains=search_keywords) | Q(
             use__icontains=search_keywords) | Q(https__icontains=search_keywords) | Q(
-            Review_status__icontains=search_keywords) | Q(RecordId__icontains=search_keywords) )
+            Review_status__icontains=search_keywords) | Q(RecordId__icontains=search_keywords))
     return data
 
 
