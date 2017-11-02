@@ -91,12 +91,12 @@ def get_result(userdict):
 
 
 if __name__ == "__main__":
-    # dic={"Action":"DescribeDomainRecords","DomainName":"jwmmma.com","RRKeyWord":"admin"}
+    dic={"Action":"DescribeDomainRecords","DomainName":"jwmmma.com","RRKeyWord":""}
     # dic = {"Action": "DeleteDomainRecord", "RecordId": "3519119366461440"}
     # dic = {"Action": "DescribeDomainWhoisInfo", "DomainName": "jwmmma.com"}
     # dic = {"Action": "DescribeDomains", "PageSize": "100"}
-    # dic={"Action":"DescribeDomainRecords","DomainName":"daxepay.cn"}
-    dic={"Action":"AddDomainRecord","DomainName":"cuea.org.cn","RR":"@","Type":"A","Value":"121.201.28.13"}
+    # dic={"Action":"DescribeDomainRecords","DomainName":"cuea.org.cn"}
+    # dic={"Action":"AddDomainRecord","DomainName":"cuea.org.cn","RR":"@","Type":"A","Value":"121.201.28.13"}
     # dic={"Action":"AddDomainRecord","DomainName":"daxepay.cn","RR":"jwmtest1","Type":"CNAME","Value":"jwm.jwmmma.com"}
     res = json.loads(get_result(dic))
     print(res)

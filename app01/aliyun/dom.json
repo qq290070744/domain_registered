@@ -1,19 +1,166 @@
 {
-  'StatusList': {
-    'Status': [
-      'ok'
+  'PageNumber': 1,
+  'TotalCount': 13,
+  'PageSize': 20,
+  'RequestId': '651BB9B8-B4E4-4801-8416-026438F57202',
+  'DomainRecords': {
+    'Record': [
+      {
+        'RR': 'rel-jwm',
+        'Status': 'ENABLE',
+        'Value': '121.201.69.206',
+        'Weight': 1,
+        'RecordId': '3544954967444480',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'admin-guess',
+        'Status': 'ENABLE',
+        'Value': '121.201.68.227',
+        'Weight': 1,
+        'RecordId': '3526674989992960',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'guess',
+        'Status': 'ENABLE',
+        'Value': '121.201.68.227',
+        'Weight': 1,
+        'RecordId': '3526674911808512',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'test-admin-guess',
+        'Status': 'ENABLE',
+        'Value': '121.201.58.176',
+        'Weight': 1,
+        'RecordId': '3525131909419008',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'test-guess',
+        'Status': 'ENABLE',
+        'Value': '121.201.58.176',
+        'Weight': 1,
+        'RecordId': '3519248490778624',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'jwm',
+        'Status': 'ENABLE',
+        'Value': 'jwm.jwmmma.com.mmycdn.com',
+        'Weight': 1,
+        'RecordId': '3504019590337536',
+        'Type': 'CNAME',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'dev',
+        'Status': 'ENABLE',
+        'Value': '121.201.58.176',
+        'Weight': 1,
+        'RecordId': '3504022518290432',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'admin',
+        'Status': 'ENABLE',
+        'Value': '121.201.69.206',
+        'Weight': 1,
+        'RecordId': '3504019635817472',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'cdn',
+        'Status': 'ENABLE',
+        'Value': 'oukgvmfjs.bkt.clouddn.com',
+        'Weight': 1,
+        'RecordId': '3503994105533440',
+        'Type': 'CNAME',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'test',
+        'Status': 'ENABLE',
+        'Value': '121.201.58.176',
+        'Weight': 1,
+        'RecordId': '3496577451036672',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'test-admin',
+        'Status': 'ENABLE',
+        'Value': '121.201.58.176',
+        'Weight': 1,
+        'RecordId': '3496513315116032',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': 'dev-admin',
+        'Status': 'ENABLE',
+        'Value': '121.201.58.176',
+        'Weight': 1,
+        'RecordId': '3496512390830080',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      },
+      {
+        'RR': '@',
+        'Status': 'ENABLE',
+        'Value': '121.201.58.176',
+        'Weight': 1,
+        'RecordId': '80397000',
+        'Type': 'A',
+        'DomainName': 'jwmmma.com',
+        'Locked': False,
+        'Line': 'default',
+        'TTL': 600
+      }
     ]
-  },
-  'RegistrationDate': '2016-03-24T22:09Z',
-  'RegistrantEmail': 'YuMing@YinSiBaoHu.AliYun.com',
-  'RequestId': '91E78576-CC41-4B15-9367-D763630BB529',
-  'DnsServers': {
-    'DnsServer': [
-      'dns10.hichina.com',
-      'dns9.hichina.com'
-    ]
-  },
-  'RegistrantName': 'Nexperian Holding Limited',
-  'Registrar': 'HICHINA ZHICHENG TECHNOLOGY LTD.',
-  'ExpirationDate': '2018-03-24T22:09Z'
+  }
 }

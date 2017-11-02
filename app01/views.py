@@ -11,6 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template import RequestContext
 from app01.aliyun import 阿里云api
 from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Q
 import threading
 
 
@@ -116,10 +117,23 @@ def domain_info(request):
         return JsonResponse(domain_info_list, safe=False)
     return render(request, 'domain_info.html')
 
-
+def maohao_souji(request):
+    if request.POST:
+        data=request.POST
+        name=data.get('name')
+        department=data.get('department')
+        maohao=data.get('maohao')
+        phone=data.get('phone')
+        times=data.get('time')
+        use=data.get('use')
+        b = maohao_info(name=name,department=department,maohao=maohao,phone=phone,times=times,use=use)
+        b.save()
+    return render(request,'maohao.html')
 @login_required
 def his(request):
+    seach = request.GET.get('seach')
     data = registered.objects.all().order_by('-id')
+    data = Seach(seach, data)
     if request.POST:
         print(request.POST)
         data_id = request.POST['_id']
@@ -135,7 +149,10 @@ def his(request):
         d = registered(id=data_id)
         d.delete()
 
-    paginator = Paginator(data, 15)  # 每页显示15个
+    if not seach:
+        paginator = Paginator(data, 15)  # 每页显示15个
+    else:
+        paginator = Paginator(data, 100)  # 每页显示100个
     page = request.GET.get('page')
     try:
         contacts = paginator.page(page)
@@ -188,7 +205,10 @@ def Review(request):
 
 @staff_member_required
 def DeleteDomainRecord(request):
+    seach = request.GET.get('seach')
+    # print(seach)
     data = registered.objects.filter(RecordId__isnull=False).order_by('-id')
+    data = Seach(seach, data)
     if request.POST:
         print(request.POST)
         data_id = request.POST['_id']
@@ -205,8 +225,10 @@ def DeleteDomainRecord(request):
 
                 send_mail('解析记录删除', mail_text, 'sa@healthmall.cn', to_mail,
                           fail_silently=False)  # "lixk@healthmall.cn",'sateam@healthmall.cn'
-
-    paginator = Paginator(data, 15)  # 每页显示15个
+    if not seach:
+        paginator = Paginator(data, 15)  # 每页显示15个
+    else:
+        paginator = Paginator(data, 100)  # 每页显示100个
     page = request.GET.get('page')
     try:
         contacts = paginator.page(page)
@@ -219,6 +241,16 @@ def DeleteDomainRecord(request):
 
     return render(request, 'his.html',
                   {"解析记录删除": "解析记录删除", 'contacts': contacts, "页的序号": range(1, contacts.paginator.num_pages + 1)})
+
+
+def Seach(seach, data):
+    search_keywords = seach
+    if search_keywords:
+        data = data.filter(Q(domain__icontains=search_keywords) | Q(ip__icontains=search_keywords) | Q(
+            name__icontains=search_keywords) | Q(department__icontains=search_keywords) | Q(
+            use__icontains=search_keywords) | Q(https__icontains=search_keywords) | Q(
+            Review_status__icontains=search_keywords) | Q(RecordId__icontains=search_keywords) )
+    return data
 
 
 def domain_api(Action, domain, https, ip):
