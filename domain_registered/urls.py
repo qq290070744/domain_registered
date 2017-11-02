@@ -20,6 +20,7 @@ from app01 import views as app01
 urlpatterns = [
     url(r"^$", app01.index),
     url(r"^maohao", app01.maohao_souji),
+    # url(r"^已经录入过信息查看", app01.maohao_souji),
     url(r"^accounts/login/$", app01.acc_login),
     url(r"^accounts/logout/$", app01.acc_logout),
     url(r"^his", app01.his),

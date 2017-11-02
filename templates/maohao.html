@@ -75,10 +75,10 @@
                     <li><a id="navbar-nav-list-pricing" href="javascript:void(0)">
                         姓名：{{ request.user.userpro.name }}</a></li>
                 {% else %}
-{#                    <span style="color: red">登录/注册 /<a href="/accounts/logout">注销</a></span>#}
+                    {#                    <span style="color: red">登录/注册 /<a href="/accounts/logout">注销</a></span>#}
                 {% endif %}
 
-<li><a id="navbar-nav-list-signup" style="padding: 0px 5px 0px 5px;" class="btn signup-button"
+                <li><a id="navbar-nav-list-signup" style="padding: 0px 5px 0px 5px;" class="btn signup-button"
                        href="/accounts/logout">注销</a></li>
                 <li><a target="_blank" id="admin" href="/admin" class="btn signup-button btn-info">login</a></li>
                 <li><a target="_blank" id="admin" href="/admin" class="btn signup-button btn-info">后台管理</a></li>
@@ -91,10 +91,10 @@
         <div class="container" style="z-index: 9;position: absolute;top: 20%;">
 
             <h1 class="text-center"><b>大象员工健康猫账号使用名册统计表</b></h1><br>
-{#        <a class=" text-center " href="/domainInfo" target="_blank">域名信息查看</a>#}
-{#            <a class=" text-center " href="/his" target="_blank">历史申请记录</a>#}
-{#            <a class=" text-center " href="/Review" target="_blank">管理员审核界面</a>#}
-{#            <a class=" text-center " href="/DeleteDomainRecord" target="_blank">删除解析记录</a>#}
+                    <a class=" text-center " href="admin/app01/maohao_info/" target="_blank">已经录入过信息查看</a>
+            {#            <a class=" text-center " href="/his" target="_blank">历史申请记录</a>#}
+            {#            <a class=" text-center " href="/Review" target="_blank">管理员审核界面</a>#}
+            {#            <a class=" text-center " href="/DeleteDomainRecord" target="_blank">删除解析记录</a>#}
             <div style="height: 10px"></div>
 
             <form role="form" action="" method="post">{% csrf_token %}
@@ -145,17 +145,18 @@
                     <label for="" class="control-label col-md-4 text-right">使用情况说明用途:</label>
                     <div class="col-md-6">
                         {#                <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">#}
-                        <textarea class="form-control" name="use" type="text" placeholder="如：XXXX使用情况说明内容，比如是否私教号，平时使用健康猫主要做什么"
+                        <textarea class="form-control" name="use" type="text"
+                                  placeholder="如：XXXX使用情况说明内容，比如是否私教号，平时使用健康猫主要做什么"
                                   required=""></textarea>
                     </div>
                 </div>
 
 
                 <div>
-{#                    <label class=""><span>是否https</span>:#}
-{#                        <input class="btn btn-danger" type="radio" name="https" value="否" checked>否#}
-{#                        <input class="btn btn-danger" type="radio" name="https" value="是">是#}
-{#                    </label>#}
+                    {#                    <label class=""><span>是否https</span>:#}
+                    {#                        <input class="btn btn-danger" type="radio" name="https" value="否" checked>否#}
+                    {#                        <input class="btn btn-danger" type="radio" name="https" value="是">是#}
+                    {#                    </label>#}
                 </div>
 
                 <input class="btn btn-primary" type="submit" value="提交">
@@ -166,7 +167,7 @@
                 <h4 style="color: red">已成功提交:</h4>
                 {{ ok|safe }}
             {% endif %}
-{#            <h4>运维部门收到配置信息时，如果是紧急需求1小时内完成，如果是正常需求1个工作日内完成配置。</h4>#}
+            {#            <h4>运维部门收到配置信息时，如果是紧急需求1小时内完成，如果是正常需求1个工作日内完成配置。</h4>#}
         </div>
     </div>
 {% endblock %}
