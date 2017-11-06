@@ -91,7 +91,7 @@
         <div class="container" style="z-index: 9;position: absolute;top: 20%;">
 
             <h1 class="text-center"><b>大象员工健康猫账号使用名册统计表</b></h1><br>
-                    <a class=" text-center " href="admin/app01/maohao_info/" target="_blank">已经录入过信息查看</a>
+            <a class=" text-center " href="admin/app01/maohao_info/" target="_blank">已经录入过信息查看</a>
             {#            <a class=" text-center " href="/his" target="_blank">历史申请记录</a>#}
             {#            <a class=" text-center " href="/Review" target="_blank">管理员审核界面</a>#}
             {#            <a class=" text-center " href="/DeleteDomainRecord" target="_blank">删除解析记录</a>#}
@@ -128,8 +128,8 @@
                     <label for="" class="control-label col-md-4 text-right">申请业务部门:</label>
                     <div class="col-md-6">
                         {#                                <input type="text" disabled class="form-control" name="number"/>#}
-{#                        <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">#}
-                        <select class="form-control"  name="department" id="">
+                        {#                        <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">#}
+                        <select class="form-control" name="department" id="">
                             <option selected="selected">请选择部门</option>
                             {% for i in DepartmenT %}
                                 <option>{{ i.department_name }}</option>
@@ -158,12 +158,12 @@
                 </div>
 
 
-
                 <input class="btn btn-primary" type="submit" value="提交">
 
 
             </form>
             {% if ok %}
+                <br><br>
                 <h1 style="color: red">已成功提交:</h1>
                 {{ ok|safe }}
             {% endif %}

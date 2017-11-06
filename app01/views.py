@@ -126,11 +126,16 @@ def maohao_souji(request):
         data = request.POST
         name = data.get('name')
         department = data.get('department')
+        department_id=Department.objects.filter(department_name=department)
+        departmentId=serializers.serialize("json",department_id)
+        departmentId=json.loads(departmentId)
+        departmentId=departmentId[0]["pk"]
+        print(departmentId)
         maohao = data.get('maohao')
         phone = data.get('phone')
         times = data.get('time')
         use = data.get('use')
-        b = maohao_info(name=name, DepartmenT=department, maohao=maohao, phone=phone, times=times, use=use)
+        b = maohao_info(name=name, DepartmenT_id=departmentId, maohao=maohao, phone=phone, times=times, use=use)
         b.save()
         return render(request, 'maohao.html', {"ok": "ok", "DepartmenT": DepartmenT})
     return render(request, 'maohao.html', {"DepartmenT": DepartmenT})
