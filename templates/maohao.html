@@ -128,7 +128,13 @@
                     <label for="" class="control-label col-md-4 text-right">申请业务部门:</label>
                     <div class="col-md-6">
                         {#                                <input type="text" disabled class="form-control" name="number"/>#}
-                        <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">
+{#                        <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">#}
+                        <select class="form-control"  name="department" id="">
+                            <option selected="selected">请选择部门</option>
+                            {% for i in DepartmenT %}
+                                <option>{{ i.department_name }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
 
@@ -140,11 +146,11 @@
                     </div>
                 </div>
 
-                {#        <label><span>域名用途:</span><textarea name="use" type="text" placeholder="如：做xx事情"></textarea><br></label><br>#}
+
                 <div class="form-group clearfix">
                     <label for="" class="control-label col-md-4 text-right">使用情况说明用途:</label>
                     <div class="col-md-6">
-                        {#                <input class="form-control" name="department" type="text" placeholder="如：技术部" required="">#}
+
                         <textarea class="form-control" name="use" type="text"
                                   placeholder="如：XXXX使用情况说明内容，比如是否私教号，平时使用健康猫主要做什么"
                                   required=""></textarea>
@@ -152,22 +158,16 @@
                 </div>
 
 
-                <div>
-                    {#                    <label class=""><span>是否https</span>:#}
-                    {#                        <input class="btn btn-danger" type="radio" name="https" value="否" checked>否#}
-                    {#                        <input class="btn btn-danger" type="radio" name="https" value="是">是#}
-                    {#                    </label>#}
-                </div>
 
                 <input class="btn btn-primary" type="submit" value="提交">
-                <!--<button class="btn btn-lg btn-warning btn-block" type="submit">登录</button> -->
+
 
             </form>
             {% if ok %}
                 <h1 style="color: red">已成功提交:</h1>
                 {{ ok|safe }}
             {% endif %}
-            {#            <h4>运维部门收到配置信息时，如果是紧急需求1小时内完成，如果是正常需求1个工作日内完成配置。</h4>#}
+
         </div>
     </div>
 {% endblock %}

@@ -13,6 +13,7 @@ from app01.aliyun import 阿里云api
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Q
 import threading
+from django.core import serializers
 
 
 def acc_login(request):
@@ -119,6 +120,8 @@ def domain_info(request):
 
 
 def maohao_souji(request):
+    DepartmenT = Department.objects.all()
+
     if request.POST:
         data = request.POST
         name = data.get('name')
@@ -127,10 +130,10 @@ def maohao_souji(request):
         phone = data.get('phone')
         times = data.get('time')
         use = data.get('use')
-        b = maohao_info(name=name, department=department, maohao=maohao, phone=phone, times=times, use=use)
+        b = maohao_info(name=name, DepartmenT=department, maohao=maohao, phone=phone, times=times, use=use)
         b.save()
-        return render(request, 'maohao.html', {"ok": "ok"})
-    return render(request, 'maohao.html')
+        return render(request, 'maohao.html', {"ok": "ok", "DepartmenT": DepartmenT})
+    return render(request, 'maohao.html', {"DepartmenT": DepartmenT})
 
 
 @login_required

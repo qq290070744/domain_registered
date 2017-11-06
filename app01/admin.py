@@ -8,14 +8,19 @@ class userproAdmin(admin.ModelAdmin):
 
 
 admin.site.register(userpro, userproAdmin)
+admin.site.register(Department)
 
 admin.site.register(filed1)
 admin.site.register(filed2)
 admin.site.register(filed3)
+
+
 class maohaoAdmin(admin.ModelAdmin):
-    list_display = ('name','department','maohao','phone','times','use')
-    search_fields = ('name','department','maohao','phone','times','use')
-admin.site.register(maohao_info,maohaoAdmin)
+    list_display = ('name', 'DepartmenT', 'maohao', 'phone', 'times', 'use')
+    search_fields = ('name', 'DepartmenT', 'maohao', 'phone', 'times', 'use')
+
+
+admin.site.register(maohao_info, maohaoAdmin)
 
 
 class registeredAdmin(admin.ModelAdmin):

@@ -18,13 +18,22 @@ class registered(models.Model):
         return self.name
 
 
+class Department(models.Model):
+    department_name = models.CharField('申请部门', max_length=100)
+
+    def __str__(self):
+        return self.department_name
+
+
 class maohao_info(models.Model):
     name = models.CharField(max_length=100)
-    department = models.CharField('申请部门', max_length=100, null=True)
-    maohao = models.CharField('猫号',max_length=100)
+    # department = models.CharField('申请部门', max_length=100, null=True)
+    DepartmenT = models.ForeignKey(Department,null=True)
+    maohao = models.CharField('猫号', max_length=100)
     phone = models.CharField(max_length=100)
-    times=models.CharField(max_length=100)
+    times = models.CharField(max_length=100)
     use = models.CharField('使用情况说明用途', max_length=100, null=True)
+
     def __str__(self):
         return self.name
 
