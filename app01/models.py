@@ -33,8 +33,8 @@ class registered(models.Model):
     colored_status.short_description = "审核状态"
 
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
-        verbose_name = u'域名信息表'
-        verbose_name_plural = u"域名信息表"
+        verbose_name = '域名信息表'
+        verbose_name_plural = "域名信息表"
 
     def __str__(self):
         return self.name
@@ -44,8 +44,8 @@ class Department(models.Model):
     department_name = models.CharField('申请部门', max_length=100)
 
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
-        verbose_name = u'猫号部门信息表'
-        verbose_name_plural = u"猫号部门信息表"
+        verbose_name = '猫号部门信息表'
+        verbose_name_plural = "猫号部门信息表"
 
     def __str__(self):
         return self.department_name
@@ -61,8 +61,8 @@ class maohao_info(models.Model):
     use = models.CharField('使用情况说明用途', max_length=100, null=True)
 
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
-        verbose_name = u'猫号信息表'
-        verbose_name_plural = u"猫号信息表"
+        verbose_name = '猫号信息表'
+        verbose_name_plural = "猫号信息表"
 
     def __str__(self):
         return self.name
@@ -86,8 +86,8 @@ class filed1(models.Model):
     name = models.CharField(max_length=100, null=True)
 
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
-        verbose_name = u'域名字段1表'
-        verbose_name_plural = u"域名字段1表"
+        verbose_name = '域名字段1表'
+        verbose_name_plural = "域名字段1表"
 
     def __str__(self):
         return self.name
@@ -97,8 +97,8 @@ class filed2(models.Model):
     name = models.CharField(max_length=100, null=True)
 
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
-        verbose_name = u'域名字段2表'
-        verbose_name_plural = u"域名字段2表"
+        verbose_name = '域名字段2表'
+        verbose_name_plural = "域名字段2表"
 
     def __str__(self):
         return self.name
@@ -108,8 +108,8 @@ class filed3(models.Model):
     name = models.CharField(max_length=100, null=True)
 
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
-        verbose_name = u'域名字段3表'
-        verbose_name_plural = u"域名字段3表"
+        verbose_name = '域名字段3表'
+        verbose_name_plural = "域名字段3表"
 
     def __str__(self):
         return self.name
@@ -120,8 +120,8 @@ class mail_list(models.Model):
     mail_name = models.CharField('姓名', max_length=100)
 
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
-        verbose_name = u'邮件接收人表'
-        verbose_name_plural = u"邮件接收人表"
+        verbose_name = '邮件接收人表'
+        verbose_name_plural = "邮件接收人表"
 
     def __str__(self):
         return self.mail_name
