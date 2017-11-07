@@ -27,24 +27,20 @@ class OrderItemInline(admin.TabularInline):
 
 class maohaoAdmin(admin.ModelAdmin):
     list_display = ('name', 'DepartmenT', 'maohao', 'phone', 'times', 'use')
-    search_fields = ('name', 'DepartmenT', 'maohao', 'phone', 'times', 'use')
+    search_fields = ('name', 'DepartmenT__department_name', 'maohao', 'phone', 'times', 'use')
     list_filter = ['name', 'DepartmenT', 'maohao', 'phone', 'times', 'use']
 
 
 admin.site.register(maohao_info, maohaoAdmin)
 
 
-
-
 class registeredAdmin(admin.ModelAdmin):
     list_display = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
-    search_fields = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
+    search_fields = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', )
+    list_filter = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
 
 
 admin.site.register(registered, registeredAdmin)
-
-
-
 
 
 class mail_listAdmin(admin.ModelAdmin):
@@ -53,4 +49,3 @@ class mail_listAdmin(admin.ModelAdmin):
 
 
 admin.site.register(mail_list, mail_listAdmin)
-
