@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime, time
 
 
 # Create your models here.
@@ -79,3 +80,14 @@ class mail_list(models.Model):
 
     def __str__(self):
         return self.mail_name
+
+
+class EmailVerifyRecord(models.Model):
+    email_choices = (
+        ('register', u'注册'),
+        ('forget', u'找回密码'),
+    )
+    code = models.CharField(max_length=20, verbose_name=u'验证码')
+    email = models.EmailField(max_length=50, verbose_name=u'邮箱')
+    send_type = models.CharField(choices=email_choices, max_length=10, verbose_name=u'验证码类型')
+    send_time = models.DateTimeField( verbose_name=u'发送时间')
