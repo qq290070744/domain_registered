@@ -15,6 +15,7 @@ xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Department)
 xadmin.site.register(filed1)
 xadmin.site.register(filed2)
+xadmin.site.register(filed3)
 
 
 class maohaoxAdmin(object):
@@ -28,7 +29,7 @@ xadmin.site.register(maohao_info, maohaoxAdmin)
 
 
 class registeredAdmin(object):
-    list_display = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
+    list_display = ('domain', 'ip', 'name', 'department', 'use', 'https', 'colored_status', 'RecordId', 'updatetime')
     search_fields = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId')
     list_filter = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
 

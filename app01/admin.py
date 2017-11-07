@@ -18,6 +18,7 @@ admin.site.register(Department)
 admin.site.register(filed1)
 
 admin.site.register(filed2)
+admin.site.register(filed3)
 
 
 class OrderItemInline(admin.TabularInline):
@@ -35,7 +36,7 @@ admin.site.register(maohao_info, maohaoAdmin)
 
 
 class registeredAdmin(admin.ModelAdmin):
-    list_display = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
+    list_display = ('domain', 'ip', 'name', 'department', 'use', 'https', 'colored_status', 'RecordId', 'updatetime')
     search_fields = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', )
     list_filter = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
 
