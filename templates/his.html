@@ -37,13 +37,13 @@
     <h1 class="text-center"><b>历史申请记录</b></h1>
 {% endif %}
 <div class="table-responsive">
-<form class="form-inline pull-right">
-  <div class="form-group">
-    <label for="exampleInputEmail2">输入要搜索的内容</label>
-    <input type="seach" class="form-control" name="seach"  placeholder="输入要搜索的内容">
-  </div>
-  <input type="submit" value="搜索" class="btn btn-info">
-</form>
+    <form class="form-inline pull-right">
+        <div class="form-group">
+            <label for="exampleInputEmail2">输入要搜索的内容</label>
+            <input type="seach" class="form-control" name="seach" placeholder="输入要搜索的内容">
+        </div>
+        <input type="submit" value="搜索" class="btn btn-info">
+    </form>
     <table class="text-center table table-hover table-bordered table-striped table-condensed ">
         <tr>
             <th>申请人</th>
@@ -84,7 +84,12 @@
                         <option value="ok" selected="selected">通知</option>
                     </select>
                 </td>
-                <td>{{ i.Review_status }}</td>
+                {% if i.Review_status != '审核通过' %}
+                    <td style="color: red">{{ i.Review_status }}</td>
+                {% else %}
+                    <td style="color: green">{{ i.Review_status }}</td>
+                {% endif %}
+
                 <td>
                     <button class="btn btn-danger">删除</button>
                 </td>
