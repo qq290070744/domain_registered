@@ -22,7 +22,7 @@ def acc_login(request):
         user = authenticate(username=request.POST.get("username"), password=request.POST.get("password"))
         if user:
             login(request, user)
-            return redirect('/')
+            return redirect(request.GET.get('next'))
         else:
             error = "error"
             return render(request, "login.html", {"login_error": error})

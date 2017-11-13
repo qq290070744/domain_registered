@@ -141,7 +141,12 @@
             $("#myModal").modal('show');//显示模态框
             $('.确认').click(function () {
                 $("#" + _id).remove();
-                $.post("", {'_id': _id, "mail": select_, "ip": ip}, function () {
+                $.post("", {
+                    '_id': _id,
+                    "mail": select_,
+                    "ip": ip,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                }, function () {
                     alert('域名为:' + domain + "的记录审核通过了！");
                     history.go(0)
                 })

@@ -91,7 +91,7 @@ def get_result(userdict):
 
 
 if __name__ == "__main__":
-    dic={"Action":"DescribeDomainRecords","DomainName":"jwmmma.com","RRKeyWord":""}
+    dic={"Action":"DescribeDomainRecords","DomainName":"jwmmma.com","RRKeyWord":"jwm"}
     # dic = {"Action": "DeleteDomainRecord", "RecordId": "3519119366461440"}
     # dic = {"Action": "DescribeDomainWhoisInfo", "DomainName": "jwmmma.com"}
     # dic = {"Action": "DescribeDomains", "PageSize": "100"}
