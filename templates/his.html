@@ -187,7 +187,12 @@
             $('#确认删除确认').click(function () {
                 $("#" + _id).remove();
                 //alert(_id);
-                $.post("", {'_id': _id, "mail": select_, "RecordId": RecordId}, function () {
+                $.post("", {
+                    '_id': _id,
+                    "mail": select_,
+                    "RecordId": RecordId,
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                }, function () {
                     alert('成功删除ID为' + _id + "的记录");
                     history.go(0);
                 })
