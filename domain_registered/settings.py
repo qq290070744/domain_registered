@@ -142,6 +142,7 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, "root_static/")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+
 EMAIL_USE_TLS = False
 EMAIL_HOST = 'smtp.mxhichina.com'
 EMAIL_PORT = 25
