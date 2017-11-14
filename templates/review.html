@@ -43,34 +43,39 @@
             <th>是否通过审核</th>
 
         </tr>
-        {% for i in contacts %}
-            <tr ip="{{ i.ip }}" id="{{ i.id }}" domain="{{ i.domain }}">
-                <td>{{ i.name }}</td>
-                <td>{{ i.department }}</td>
-                <td>{{ i.use }}</td>
-                <td>{{ i.domain }}</td>
-                <td>{{ i.ip }}</td>
-                {#                <td>beta-{{ i.domain }}</td>#}
-                {#                <td>dev-{{ i.domain }}</td>#}
-                {#                <td>rel-{{ i.domain }}</td>#}
-                {#                <td>check-{{ i.domain }}</td>#}
-                <td>{{ i.https }}</td>
-                <td>{{ i.updatetime|date:"Y-m-d H:i:s" }}</td>
-                <td>{{ i.id }}</td>
-                {#                <td>{{ i.RecordId }}</td>#}
-                <td>
-                    <select name="mail">
-                        <option value="no">不通知</option>
-                        <option value="ok" selected="selected">通知</option>
-                    </select>
-                </td>
-                <td>{{ i.Review_status }}</td>
+        {% if contacts %}
+            {% for i in contacts %}
+                <tr ip="{{ i.ip }}" id="{{ i.id }}" domain="{{ i.domain }}">
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.department }}</td>
+                    <td>{{ i.use }}</td>
+                    <td>{{ i.domain }}</td>
+                    <td>{{ i.ip }}</td>
+                    {#                <td>beta-{{ i.domain }}</td>#}
+                    {#                <td>dev-{{ i.domain }}</td>#}
+                    {#                <td>rel-{{ i.domain }}</td>#}
+                    {#                <td>check-{{ i.domain }}</td>#}
+                    <td>{{ i.https }}</td>
+                    <td>{{ i.updatetime|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ i.id }}</td>
+                    {#                <td>{{ i.RecordId }}</td>#}
+                    <td>
+                        <select name="mail">
+                            <option value="no">不通知</option>
+                            <option value="ok" selected="selected">通知</option>
+                        </select>
+                    </td>
+                    <td>{{ i.Review_status }}</td>
 
-                <td>
-                    <button id="点击通过" class="btn btn-primary">点击通过</button>
-                </td>
-            </tr>
-        {% endfor %}
+                    <td>
+                        <button id="点击通过" class="btn btn-primary">点击通过</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <h1 class="text-center"><b>暂无审核信息</b></h1>
+        {% endif %}
+
     </table>
 </div>
 <div class="pagination pull-right">
