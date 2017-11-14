@@ -42,7 +42,7 @@ class registered(models.Model):
 
 class Department(models.Model):
     department_name = models.CharField('申请部门', max_length=100)
-
+    the_company=models.CharField( max_length=100,verbose_name='公司',null=True)
     class Meta:  # 这个是用来在admin页面上展示的，因为默认显示的是表名，加上这个就变成中文啦
         verbose_name = '猫号部门信息表'
         verbose_name_plural = "猫号部门信息表"

@@ -10,9 +10,13 @@ class EmailVerifyRecordAdmin(object):
     list_filter = ['code', 'email', 'send_type', 'send_time']
 
 
-xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
+# xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
+class Department_admin(object):
+    list_display = ['department_name', 'the_company']
+    search_fields = ['department_name', 'the_company']
 
-xadmin.site.register(Department)
+
+xadmin.site.register(Department,Department_admin)
 xadmin.site.register(filed1)
 xadmin.site.register(filed2)
 xadmin.site.register(filed3)
@@ -29,7 +33,8 @@ xadmin.site.register(maohao_info, maohaoxAdmin)
 
 
 class registeredAdmin(object):
-    list_display = ('id', 'domain', 'ip', 'name', 'department', 'use', 'https', 'colored_status', 'RecordId', 'updatetime')
+    list_display = (
+    'id', 'domain', 'ip', 'name', 'department', 'use', 'https', 'colored_status', 'RecordId', 'updatetime')
     search_fields = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId')
     list_filter = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
 
