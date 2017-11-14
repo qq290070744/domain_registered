@@ -24,26 +24,27 @@
 <h1 class="text-center">域名审核界面</h1>
 <div class="table-responsive">
     <table class="text-center table table-hover table-bordered table-striped table-condensed ">
-        <tr>
-            <th>申请人</th>
-            <th>申请业务部门</th>
-            <th>域名用途</th>
-            <th>正式域名</th>
-            <th>解析到的IP</th>
-            {#            <th>测试</th>#}
-            {#            <th>开发</th>#}
-            {#            <th>灰度</th>#}
-            {#            <th>验收</th>#}
-            <th>是否需要https</th>
-            <th>申请时间</th>
-            <th>申请ID</th>
-            {#            <th>解析记录的ID</th>#}
-            <th>邮件通知</th>
-            <th>审核状态</th>
-            <th>是否通过审核</th>
-
-        </tr>
         {% if contacts %}
+            <tr>
+                <th>申请人</th>
+                <th>申请业务部门</th>
+                <th>域名用途</th>
+                <th>正式域名</th>
+                <th>解析到的IP</th>
+                {#            <th>测试</th>#}
+                {#            <th>开发</th>#}
+                {#            <th>灰度</th>#}
+                {#            <th>验收</th>#}
+                <th>是否需要https</th>
+                <th>申请时间</th>
+                <th>申请ID</th>
+                {#            <th>解析记录的ID</th>#}
+                <th>邮件通知</th>
+                <th>审核状态</th>
+                <th>是否通过审核</th>
+
+            </tr>
+
             {% for i in contacts %}
                 <tr ip="{{ i.ip }}" id="{{ i.id }}" domain="{{ i.domain }}">
                     <td>{{ i.name }}</td>
