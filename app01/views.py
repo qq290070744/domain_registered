@@ -178,7 +178,7 @@ def his(request):
     return render(request, 'his.html', {'contacts': contacts, "页的序号": range(1, contacts.paginator.num_pages + 1)})
     # return render(request, 'his.html', {"data": data})
 
-
+@login_required
 @staff_member_required
 def Review(request):
     data = registered.objects.exclude(Review_status="审核通过").order_by('-id')
@@ -214,7 +214,7 @@ def Review(request):
         contacts = paginator.page(paginator.num_pages)
     return render(request, 'review.html', {"contacts": contacts})
 
-
+@login_required
 @staff_member_required
 def DeleteDomainRecord(request):
     seach = request.GET.get('seach')
