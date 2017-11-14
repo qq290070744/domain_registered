@@ -29,7 +29,7 @@ xadmin.site.register(maohao_info, maohaoxAdmin)
 
 
 class registeredAdmin(object):
-    list_display = ('domain', 'ip', 'name', 'department', 'use', 'https', 'colored_status', 'RecordId', 'updatetime')
+    list_display = ('id', 'domain', 'ip', 'name', 'department', 'use', 'https', 'colored_status', 'RecordId', 'updatetime')
     search_fields = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId')
     list_filter = ('domain', 'ip', 'name', 'department', 'use', 'https', 'Review_status', 'RecordId', 'updatetime')
 
