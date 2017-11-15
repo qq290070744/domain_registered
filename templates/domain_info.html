@@ -23,13 +23,13 @@
                     var html = '';
                     for (var i in domainInfoList) {
                         html += '<tr>' +
-                            '            <td>' + domainInfoList[i].DomainName + '</td>' +
-                            '            <td>' + domainInfoList[i].RegistrantName + '</td>' +
-                            '            <td>' + domainInfoList[i].RegistrantEmail + '</td>' +
-                            '            <td>' + domainInfoList[i].Registrar + '</td>' +
-                            '            <td>' + domainInfoList[i].RegistrationDate + '</td>' +
-                            '            <td>' + domainInfoList[i].ExpirationDate + '</td>' +
-                            '        </tr>'
+                            '<td>' + domainInfoList[i].DomainName + '</td>' +
+                            '<td>' + domainInfoList[i].RegistrantName + '</td>' +
+                            '<td>' + domainInfoList[i].RegistrantEmail + '</td>' +
+                            '<td>' + domainInfoList[i].Registrar + '</td>' +
+                            '<td>' + domainInfoList[i].RegistrationDate + '</td>' +
+                            '<td>' + domainInfoList[i].ExpirationDate + '</td>' +
+                            '</tr>'
                     }
                     $('table').append(html);
                 }
