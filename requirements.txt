@@ -1,4 +1,4 @@
 django==1.11.16
 pymysql
 requests
-
+git+git://github.com/sshwsfc/xadmin.git
