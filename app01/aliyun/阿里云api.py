@@ -18,8 +18,8 @@ try:
 except ImportError:
     import http.client as httplib
 #######################################
-AccessKeyId = '8TeO39wwohu7qENg'  # "你的AccessKeyId"
-AccessKeySecret = 'wg8K6ZwDc1hiCqxXYKmSVkjRMYngKh'  # "你的AccessKeySecret "
+AccessKeyId = 'xxxxxxxx'  # "你的AccessKeyId"
+AccessKeySecret = 'xxxxxxxxx'  # "你的AccessKeySecret "
 
 URL = 'http://dns.aliyuncs.com/?'
 

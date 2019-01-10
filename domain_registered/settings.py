@@ -74,33 +74,24 @@ WSGI_APPLICATION = 'domain_registered.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES0 = {
+DATABASES= {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'domain_registered',
-#         'USER': 'jiang',
-#         'PASSWORD': 'jiangwenhui',
-#         'HOST': '121.201.68.21',
-#         'PORT': 3307,
+#         'USER': 'user',
+#         'PASSWORD': 'password',
+#         'HOST': '127.0.0.1',
+#         'PORT': 3306,
 #     }
 # }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'domain_registered',
-        'USER': 'jwmmma',
-        'PASSWORD': '1Ee156f68620ce89',
-        'HOST': '121.201.7.63',
-        'PORT': 33068,
-    }
-}
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -143,9 +134,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "root_static/")
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
-EMAIL_USE_TLS = False
-EMAIL_HOST = 'smtp.mxhichina.com'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'sa@healthmall.cn'
-EMAIL_HOST_PASSWORD = '5Ej5c3uFK1x7yH2QRrpH'
-DEFAULT_FROM_EMAIL = '申请域名 <sa@healthmall.cn>'
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.xxxxx.com'  # 如果是 163 改成 smtp.163.com
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'xxxx@xxx.xx' # 帐号
+EMAIL_HOST_PASSWORD = 'xxxxxxxx'  # 密码
+DEFAULT_FROM_EMAIL = '域名 <{}>'.format(EMAIL_HOST_USER)

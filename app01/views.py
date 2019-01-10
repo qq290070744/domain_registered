@@ -15,6 +15,10 @@ from django.db.models import Q
 import threading
 from django.core import serializers
 
+from domain_registered import settings
+
+from_mail = settings.EMAIL_HOST_USER
+
 
 def acc_login(request):
     if request.method == "POST":
@@ -58,8 +62,6 @@ text = '''
 是否需要https：{}
 '''
 to_mail = [
-    # 'jiangwh@healthmall.cn',
-    # 'sateam@healthmall.cn',
 ]  # 邮件发送给谁
 
 
@@ -81,8 +83,7 @@ def index(request):
         mail = mail.replace("无-", '')
         print(mail)
         mail_text = text.format(data["user"], data["department"], data["use"], mail, data['ip'], data["https"])
-        send_mail('域名申请', mail_text, 'sa@healthmall.cn',
-                  to_mail, fail_silently=False)  # 'sateam@healthmall.cn'
+        send_mail('域名申请', mail_text, from_mail, to_mail, fail_silently=False)
 
         b = registered(domain=mail, name=data["user"], department=data["department"], use=data["use"], ip=data['ip'],
                        https=data["https"], updatetime=time.strftime("%Y-%m-%d %H:%M:%S"), Review_status="未审核")
@@ -126,10 +127,10 @@ def maohao_souji(request):
         data = request.POST
         name = data.get('name')
         department = data.get('department')
-        department_id=Department.objects.filter(department_name=department)
-        departmentId=serializers.serialize("json",department_id)
-        departmentId=json.loads(departmentId)
-        departmentId=departmentId[0]["pk"]
+        department_id = Department.objects.filter(department_name=department)
+        departmentId = serializers.serialize("json", department_id)
+        departmentId = json.loads(departmentId)
+        departmentId = departmentId[0]["pk"]
         print(departmentId)
         maohao = data.get('maohao')
         phone = data.get('phone')
@@ -155,8 +156,7 @@ def his(request):
             for i in mail_text:
                 mail_text = "域名：{}已被删除!".format(i.domain)
 
-                send_mail('域名删除', mail_text, 'sa@healthmall.cn', to_mail,
-                          fail_silently=False)  # "lixk@healthmall.cn",'sateam@healthmall.cn'
+                send_mail('域名删除', mail_text, from_mail, to_mail, fail_silently=False)
 
         d = registered(id=data_id)
         d.delete()
@@ -178,6 +178,7 @@ def his(request):
     return render(request, 'his.html', {'contacts': contacts, "页的序号": range(1, contacts.paginator.num_pages + 1)})
     # return render(request, 'his.html', {"data": data})
 
+
 @login_required
 @staff_member_required
 def Review(request):
@@ -197,7 +198,7 @@ def Review(request):
                 RecordId = domain_api('AddDomainRecord', i.domain, i.https, ip)  # 调用阿里云域名api
                 if RecordId:
                     if (mail_select == 'ok'):
-                        send_mail('域名审核通过', mail_text, 'sa@healthmall.cn', to_mail, fail_silently=False)  # 发邮件
+                        send_mail('域名审核通过', mail_text, from_mail, to_mail, fail_silently=False)  # 发邮件
                     registered.objects.filter(id=data_id).update(Review_status='审核通过', RecordId=RecordId)  # 数据库记录
     except Exception:
         pass
@@ -213,6 +214,7 @@ def Review(request):
         # 如果页面超出范围（例如9999），则提供最后一页的结果。
         contacts = paginator.page(paginator.num_pages)
     return render(request, 'review.html', {"contacts": contacts})
+
 
 @login_required
 @staff_member_required
@@ -235,8 +237,7 @@ def DeleteDomainRecord(request):
             for i in mail_text:
                 mail_text = "解析记录：{}已被删除!".format(i.domain)
 
-                send_mail('解析记录删除', mail_text, 'sa@healthmall.cn', to_mail,
-                          fail_silently=False)  # "lixk@healthmall.cn",'sateam@healthmall.cn'
+                send_mail('解析记录删除', mail_text, from_mail, to_mail, fail_silently=False)
     if not seach:
         paginator = Paginator(data, 15)  # 每页显示15个
     else:
