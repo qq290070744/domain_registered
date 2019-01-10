@@ -6,12 +6,12 @@
 
 1.修改domain_registered/settings.py文件的最下面
 -
-    EMAIL_USE_TLS = False
-    EMAIL_HOST = 'smtp地址  smtp.xxxxx.com'
-    EMAIL_PORT = 25
-    EMAIL_HOST_USER = '邮箱账号 zzz@xxxxxx.com'
-    EMAIL_HOST_PASSWORD = '邮箱密码'
-    DEFAULT_FROM_EMAIL = '申请域名 <admin@admin.con>'
+    EMAIL_USE_SSL = True
+    EMAIL_HOST = 'smtp.xxxxx.com'  # smtp地址
+    EMAIL_PORT = 465
+    EMAIL_HOST_USER = 'xxxx@xxx.xx' # 邮箱账号
+    EMAIL_HOST_PASSWORD = 'xxxxxxxx'  # 密码
+    DEFAULT_FROM_EMAIL = '申请域名 <{}>'.format(EMAIL_HOST_USER)
 
 2.修改app01/aliyun/阿里云api.py 
 -

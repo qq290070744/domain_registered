@@ -139,4 +139,4 @@ EMAIL_HOST = 'smtp.xxxxx.com'  # 如果是 163 改成 smtp.163.com
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'xxxx@xxx.xx' # 帐号
 EMAIL_HOST_PASSWORD = 'xxxxxxxx'  # 密码
-DEFAULT_FROM_EMAIL = '域名 <{}>'.format(EMAIL_HOST_USER)
+DEFAULT_FROM_EMAIL = '申请域名 <{}>'.format(EMAIL_HOST_USER)
