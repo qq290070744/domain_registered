@@ -56,7 +56,7 @@
 
 10.nslookup 测试    如下图：
 -
-![Alt text](11.png)
+![Alt text](12.png)
 
 
 OK，这样就走完一套流程了
