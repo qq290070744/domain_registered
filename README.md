@@ -20,6 +20,7 @@
 
 3.启动
 -
+    pip3 install -r requirements.txt
     python3 manage.py runserver 0:8000
 浏览器访问 ip:8000/admin  
 账号 root 密码 jiangwenhui
